@@ -33,8 +33,15 @@ Analyzes log files and displays:
 - Total number of lines
 - Counts of INFO, WARNING, and ERROR messages
 - Optional case-insensitive keyword search
-- Error messages for missing or invalid files
+- Error handling for missing or unreadable files
 
+### 5. Process Monitor (`process_monitor.sh`)
+Monitors running Linux processes.
+- Displays the top 5 processes by CPU usage
+- Displays the top 5 processes by memory usage
+- Searches for processes by name
+- Checks process details by PID
+- Validates PID input and handles missing processes
 
 ## Usage
 
@@ -62,4 +69,20 @@ Run the scripts:
 
 # Search log entries by keyword
 ./scripts/log_analyzer.sh tests/system.log Backup
+
+# Display top CPU and memory processes
+./scripts/process_monitor.sh
+
+# Search for a process by name
+./scripts/process_monitor.sh code
+
+# Search for a process by PID
+./scripts/process_monitor.sh "" 2109
 ```
+## Environment
+
+Developed and tested on Kali Linux.
+
+## Author
+
+GitHub: [dkrupski](https://github.com/dkrupski)
