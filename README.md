@@ -50,6 +50,14 @@ Monitors Linux systemd services.
 - Identifies running and stopped services.
 - Shows whether a service is enabled at startup.
 
+### 7. Network Monitor (`network_monitor.sh`)
+Performs basic Linux network diagnostics.
+- Checks host reachability using ping.
+- Checks whether a local TCP/UDP port is listening.
+- Validates port numbers (1–65535).
+- Checks HTTP response status using curl.
+- Handles connection errors.
+
 ## Usage
 
 Clone the repository:
@@ -88,6 +96,15 @@ Run the scripts:
 
 # Check service status and startup configuration
 ./scripts/service_monitor.sh ssh
+
+# Check host availability
+bash scripts/network_monitor.sh google.com
+
+# Check host and local port
+bash scripts/network_monitor.sh google.com 22
+
+# Check host, local port and HTTP status
+bash scripts/network_monitor.sh google.com 22 https://www.google.com
 ```
 ## Environment
 
@@ -96,3 +113,5 @@ Developed and tested on Kali Linux.
 ## Author
 
 GitHub: [dkrupski](https://github.com/dkrupski)
+
+
