@@ -58,6 +58,15 @@ Performs basic Linux network diagnostics.
 - Checks HTTP response status using curl.
 - Handles connection errors.
 
+### 8. User Audit (`user_audit.sh`)
+Performs basic Linux user and home directory security auditing.
+- Checks whether a user exists.
+- Displays UID, GID and group memberships.
+- Shows the user's home directory and login shell.
+- Checks home directory permissions.
+- Detects directories writable by group or others.
+- Handles missing users and home directories.
+
 ## Usage
 
 Clone the repository:
@@ -105,6 +114,12 @@ bash scripts/network_monitor.sh google.com 22
 
 # Check host, local port and HTTP status
 bash scripts/network_monitor.sh google.com 22 https://www.google.com
+
+# Audit the current user
+bash scripts/user_audit.sh "$(whoami)"
+
+# Audit a specific user
+bash scripts/user_audit.sh root
 ```
 ## Environment
 
