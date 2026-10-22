@@ -43,6 +43,13 @@ Monitors running Linux processes.
 - Checks process details by PID
 - Validates PID input and handles missing processes
 
+### 6. Service Monitor (`service_monitor.sh`)
+Monitors Linux systemd services.
+- Checks whether a service exists.
+- Displays the current service status.
+- Identifies running and stopped services.
+- Shows whether a service is enabled at startup.
+
 ## Usage
 
 Clone the repository:
@@ -78,6 +85,9 @@ Run the scripts:
 
 # Search for a process by PID
 ./scripts/process_monitor.sh "" 2109
+
+# Check service status and startup configuration
+./scripts/service_monitor.sh ssh
 ```
 ## Environment
 
