@@ -67,6 +67,14 @@ Performs basic Linux user and home directory security auditing.
 - Detects directories writable by group or others.
 - Handles missing users and home directories.
 
+### 9. System Health Monitor (`system_health.sh`)
+Monitors overall Linux system health and generates a status report.
+- Monitors CPU, RAM, and disk usage
+- Displays system hostname and uptime
+- Detects resource usage above an 80% threshold
+- Provides an overall system status (OK/WARNING)
+- Handles command failures and invalid CPU data
+
 ## Usage
 
 Clone the repository:
@@ -120,6 +128,9 @@ bash scripts/user_audit.sh "$(whoami)"
 
 # Audit a specific user
 bash scripts/user_audit.sh root
+
+# Generate a system health report
+bash scripts/system_health.sh
 ```
 ## Environment
 
