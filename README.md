@@ -1,7 +1,10 @@
 # Linux Admin Toolkit
 
 A collection of Bash scripts for Linux system administration,
-process monitoring, file management, and automation.
+monitoring, automation, and basic security auditing.
+
+Developed as a hands-on project to practice Bash scripting,
+Linux administration, error handling, and command-line tools.
 
 ## Technologies
 
@@ -13,7 +16,7 @@ process monitoring, file management, and automation.
 ## Scripts
 
 ### 1. System Information (`system_info.sh`)
-Displays basic Linux system information:
+Displays basic Linux system information.
 - Hostname and current user
 - Kernel version and system uptime
 - CPU information
@@ -26,7 +29,7 @@ Monitors disk usage and displays a warning when usage reaches a defined threshol
 Creates compressed backups of directories.
 - Accepts a source directory as an argument
 - Creates timestamped `.tar.gz` archives
-- Handles missing directories and backup errors
+- Handles missing source directories and backup failures
 
 ### 4. Log Analyzer (`log_analyzer.sh`)
 Analyzes log files and displays:
@@ -44,36 +47,52 @@ Monitors running Linux processes.
 - Validates PID input and handles missing processes
 
 ### 6. Service Monitor (`service_monitor.sh`)
-Monitors Linux systemd services.
-- Checks whether a service exists.
-- Displays the current service status.
-- Identifies running and stopped services.
-- Shows whether a service is enabled at startup.
+Monitors systemd services on Linux.
+- Checks whether a service exists
+- Displays the current service status
+- Identifies running and stopped services
+- Shows whether a service is enabled at startup
 
 ### 7. Network Monitor (`network_monitor.sh`)
 Performs basic Linux network diagnostics.
-- Checks host reachability using ping.
-- Checks whether a local TCP/UDP port is listening.
-- Validates port numbers (1–65535).
-- Checks HTTP response status using curl.
-- Handles connection errors.
+- Checks host reachability using ping
+- Checks whether a local TCP/UDP port is listening
+- Validates port numbers (1–65535)
+- Checks HTTP status codes using curl
+- Handles connection errors
 
 ### 8. User Audit (`user_audit.sh`)
-Performs basic Linux user and home directory security auditing.
-- Checks whether a user exists.
-- Displays UID, GID and group memberships.
-- Shows the user's home directory and login shell.
-- Checks home directory permissions.
-- Detects directories writable by group or others.
-- Handles missing users and home directories.
+Audits Linux user accounts and home directory permissions.
+- Checks whether a user exists
+- Displays UID, GID, and group memberships
+- Shows the user's home directory and login shell
+- Checks home directory permissions
+- Detects directories writable by group or others
+- Handles missing users and home directories
 
 ### 9. System Health Monitor (`system_health.sh`)
 Monitors overall Linux system health and generates a status report.
 - Monitors CPU, RAM, and disk usage
 - Displays system hostname and uptime
-- Detects resource usage above an 80% threshold
+- Detects resource usage at or above an 80% threshold
 - Provides an overall system status (OK/WARNING)
 - Handles command failures and invalid CPU data
+
+### 10. Admin Toolkit (`admin_toolkit.sh`)
+Provides an interactive command-line interface for Linux system administration.
+- Integrates all nine administration tools into one menu
+- Supports user input and optional arguments
+- Runs scripts independently of the current working directory
+- Handles invalid menu selections and end-of-file (EOF) input
+- Returns to the main menu after executing a tool
+
+## Requirements
+
+- Linux with systemd
+- Bash
+- Standard Linux command-line utilities
+- `curl`, `ping`, and `ss`
+- `top`, `free`, `df`, and `awk`
 
 ## Usage
 
@@ -84,35 +103,45 @@ git clone https://github.com/dkrupski/Linux-Admin-Toolkit.git
 cd Linux-Admin-Toolkit
 ```
 
-Run the scripts:
+### Interactive Menu
+
+Launch all administration tools from one menu:
+
+```bash
+bash scripts/admin_toolkit.sh
+```
+
+### Individual Scripts
+
+You can also run each script separately.
 
 ```bash
 # Display system information
-./scripts/system_info.sh
+bash scripts/system_info.sh
 
 # Check disk usage
-./scripts/disk_monitor.sh
+bash scripts/disk_monitor.sh
 
 # Create a directory backup
-./scripts/backup.sh /path/to/directory
+bash scripts/backup.sh /path/to/directory
 
 # Analyze a log file
-./scripts/log_analyzer.sh tests/system.log
+bash scripts/log_analyzer.sh tests/system.log
 
 # Search log entries by keyword
-./scripts/log_analyzer.sh tests/system.log Backup
+bash scripts/log_analyzer.sh tests/system.log Backup
 
 # Display top CPU and memory processes
-./scripts/process_monitor.sh
+bash scripts/process_monitor.sh
 
 # Search for a process by name
-./scripts/process_monitor.sh code
+bash scripts/process_monitor.sh code
 
-# Search for a process by PID
-./scripts/process_monitor.sh "" 2109
+# Check a process by PID (replace 2109 with an existing PID)
+bash scripts/process_monitor.sh "" 2109
 
 # Check service status and startup configuration
-./scripts/service_monitor.sh ssh
+bash scripts/service_monitor.sh ssh
 
 # Check host availability
 bash scripts/network_monitor.sh google.com
@@ -132,6 +161,7 @@ bash scripts/user_audit.sh root
 # Generate a system health report
 bash scripts/system_health.sh
 ```
+
 ## Environment
 
 Developed and tested on Kali Linux.
